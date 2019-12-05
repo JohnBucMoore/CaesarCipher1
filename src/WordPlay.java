@@ -8,7 +8,20 @@ public class WordPlay {
         return false;
     }
 
-
+    public String replaceVowels(String phrase, char ch) {
+        StringBuilder newPhrase = new StringBuilder(phrase);
+        for (int i = 0; i < phrase.length(); i++) {
+            char currChar = phrase.charAt(i);
+            if (isVowel(currChar)) {
+                if (Character.isUpperCase(currChar)) {
+                    newPhrase.setCharAt(i, Character.toUpperCase(ch));
+                } else {
+                    newPhrase.setCharAt(i, Character.toLowerCase(ch));
+                }
+            }
+        }
+        return newPhrase.toString();
+    }
 /*
     public void digitTest() {
         String test = "ABCabc0123456789';#!";
@@ -47,10 +60,15 @@ public class WordPlay {
         System.out.println(isVowel('9'));
     }
 
+    public void testReplaceVowels() {
+        System.out.println(replaceVowels("Aloha", 'x'));
+    }
+
     public static void main(String[] args) {
         WordPlay string = new WordPlay();
         //string.digitTest();
         //System.out.println(string.encrypt("Hello World!", 13));
-        string.testIsVowel();
+        //string.testIsVowel();
+        string.testReplaceVowels();
     }
 }
