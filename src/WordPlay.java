@@ -22,6 +22,20 @@ public class WordPlay {
         }
         return newPhrase.toString();
     }
+
+    public String emphasize(String phrase, char ch) {
+        // edit to check char case and case of charAt
+        StringBuilder newPhrase = new StringBuilder(phrase);
+        for (int i = 0; i < phrase.length(); i++) {
+            if (Character.toLowerCase(phrase.charAt(i)) == ch && i % 2 == 0) {
+                newPhrase.setCharAt(i, '*');
+            } else if (Character.toLowerCase(phrase.charAt(i)) == ch && i % 2 == 1) {
+                newPhrase.setCharAt(i, '+');
+            }
+        }
+        return newPhrase.toString();
+    }
+
 /*
     public void digitTest() {
         String test = "ABCabc0123456789';#!";
@@ -64,11 +78,17 @@ public class WordPlay {
         System.out.println(replaceVowels("Aloha", 'x'));
     }
 
+    public void testEmphasize() {
+        System.out.println(emphasize("dna ctgaaactga", 'a'));
+        System.out.println(emphasize("Mary Bella Abracadabra", 'a'));
+    }
+
     public static void main(String[] args) {
         WordPlay string = new WordPlay();
         //string.digitTest();
         //System.out.println(string.encrypt("Hello World!", 13));
         //string.testIsVowel();
-        string.testReplaceVowels();
+        //string.testReplaceVowels();
+        string.testEmphasize();
     }
 }
